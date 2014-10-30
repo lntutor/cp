@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 
-void sort (int array[], int n);
+void selection_sort (int array[], int n);// n = size of array
+
+void bubble_sort (int array[], int n);// n = size of array
 
 #endif /* defined(__c__selectionsort__) */

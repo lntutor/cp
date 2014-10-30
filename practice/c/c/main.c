@@ -7,15 +7,14 @@
 //
 
 #include <stdio.h>
-#include "selectionsort.h"
+#include "simplesort.h"
 #include "base.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
     int array [] = {2,3,1,-9,7};
     int size = sizeof(array)/sizeof(array[0]);
-    sort(array, size);
+    //selection_sort(array, size);
+    bubble_sort(array, size);
     print_array(array, size);
     return 0;
 }
