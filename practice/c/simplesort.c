@@ -91,7 +91,7 @@ void merge(int array[], int left, int mid, int right){
     
     int arrLeft[firstHalf];
     int arrRight[secondHalf];
-    
+     /* Copy data to temp arrays arrLeft[] and arrRight[] */
     for (i = 0; i<firstHalf; i++) {
         arrLeft[i] = array[left + i];
     }
@@ -99,9 +99,11 @@ void merge(int array[], int left, int mid, int right){
         arrRight[i] = array[mid + 1 + i];
     }
     
+    /* Merge the temp arrays back into arr[l..r]*/
     k = left;
     i = 0;
     j = 0;
+    
     while (i<firstHalf && j <secondHalf) {
         if (arrLeft[i] <= arrRight[j]) {
             array[k] = arrLeft[i];
@@ -113,12 +115,14 @@ void merge(int array[], int left, int mid, int right){
         k++;
     }
     
+    /* Copy the remaining elements of arrLeft[], if there are any */
     while (i<firstHalf) {
         array[k] = arrLeft[i];
         i++;
         k++;
     }
     
+    /* Copy the remaining elements of arrRight[], if there are any */
     while (j<secondHalf) {
         array[k] = arrRight[j];
         j++;
