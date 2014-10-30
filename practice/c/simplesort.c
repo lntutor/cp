@@ -76,3 +76,70 @@ void insertion_sort(int array[], int n){
         }
     }
 }
+
+
+/*
+ * Implementation of merge sort
+ */
+void merge(int array[], int left, int mid, int right){
+    
+    int i = 0;
+    int j =0;
+    int k;
+    int firstHalf = mid - left + 1;
+    int secondHalf = right - mid;
+    
+    int arrLeft[firstHalf];
+    int arrRight[secondHalf];
+    
+    for (i = 0; i<firstHalf; i++) {
+        arrLeft[i] = array[left + i];
+    }
+    for (i = 0; i< secondHalf; i++) {
+        arrRight[i] = array[mid + 1 + i];
+    }
+    
+    k = left;
+    i = 0;
+    j = 0;
+    while (i<firstHalf && j <secondHalf) {
+        if (arrLeft[i] <= arrRight[j]) {
+            array[k] = arrLeft[i];
+            i++;
+        } else {
+            array[k] = arrRight[j];
+            j++;
+        }
+        k++;
+    }
+    
+    while (i<firstHalf) {
+        array[k] = arrLeft[i];
+        i++;
+        k++;
+    }
+    
+    while (j<secondHalf) {
+        array[k] = arrRight[j];
+        j++;
+        k++;
+    }
+}
+
+void merge_sort(int array[], int left, int right) {
+    if (right>left) {
+        int mid = left + (right-left)/2;
+        merge_sort(array, left, mid);
+        merge_sort(array, mid+1, right);
+        merge(array, left, mid, right);
+    }
+}
+
+
+
+
+
+
+
+
+

@@ -34,4 +34,6 @@ void bubble_sort2 (int array[], int n);// n = size of array
 
 void insertion_sort (int array[], int n); // n = size of array
 
+void merge_sort(int array[], int left, int right);
+
 #endif /* defined(__c__selectionsort__) */
