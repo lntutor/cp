@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7EB4C5851A03CD6200144569 /* codechef1.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4C5841A03CD6200144569 /* codechef1.c */; };
 		7EB5E1F819FC128400025B5D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5E1F719FC128400025B5D /* main.c */; };
 		7EB5E20119FC12C500025B5D /* simplesort.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5E1FF19FC12C500025B5D /* simplesort.c */; };
 		7EB5E20419FC142900025B5D /* base.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5E20219FC142900025B5D /* base.c */; };
@@ -25,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7EB4C5841A03CD6200144569 /* codechef1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = codechef1.c; sourceTree = "<group>"; };
 		7EB5E1F419FC128400025B5D /* c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = c; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB5E1F719FC128400025B5D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		7EB5E1FF19FC12C500025B5D /* simplesort.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = simplesort.c; sourceTree = "<group>"; };
@@ -44,9 +46,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7EB4C5831A03CA8000144569 /* codechef */ = {
+			isa = PBXGroup;
+			children = (
+				7EB4C5841A03CD6200144569 /* codechef1.c */,
+			);
+			name = codechef;
+			sourceTree = "<group>";
+		};
 		7EB5E1EB19FC128400025B5D = {
 			isa = PBXGroup;
 			children = (
+				7EB4C5831A03CA8000144569 /* codechef */,
 				7EB5E20519FC143100025B5D /* base */,
 				7EB5E1FE19FC12AC00025B5D /* sort */,
 				7EB5E1F619FC128400025B5D /* c */,
@@ -146,6 +157,7 @@
 			files = (
 				7EB5E20119FC12C500025B5D /* simplesort.c in Sources */,
 				7EB5E20419FC142900025B5D /* base.c in Sources */,
+				7EB4C5851A03CD6200144569 /* codechef1.c in Sources */,
 				7EB5E1F819FC128400025B5D /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

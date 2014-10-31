@@ -16,7 +16,16 @@ int main(int argc, const char * argv[]) {
     //selection_sort(array, size);
     //bubble_sort2(array, size);
     //insertion_sort(array, size);
-    merge_sort(array, 0, size-1);
-    print_array(array, size);
+    //merge_sort(array, 0, size-1);
+    //print_array(array, size);
+    int input;
+    while (1) {
+        scanf("%d", &input);
+        if (input!=42) {
+            printf("%d\n", input);
+        }else {
+            break;
+        }
+    }
     return 0;
 }
