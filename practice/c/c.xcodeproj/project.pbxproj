@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		7EB4C5851A03CD6200144569 /* codechef1.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4C5841A03CD6200144569 /* codechef1.c */; };
 		7EB4C5871A03CF1000144569 /* atm.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4C5861A03CF1000144569 /* atm.c */; };
+		7EB4C5891A03DBBE00144569 /* EnormousInputTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4C5881A03DBBE00144569 /* EnormousInputTest.c */; };
 		7EB5E1F819FC128400025B5D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5E1F719FC128400025B5D /* main.c */; };
 		7EB5E20119FC12C500025B5D /* simplesort.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5E1FF19FC12C500025B5D /* simplesort.c */; };
 		7EB5E20419FC142900025B5D /* base.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5E20219FC142900025B5D /* base.c */; };
+		7ECBC9141A050C0A00B71B67 /* factorial.c in Sources */ = {isa = PBXBuildFile; fileRef = 7ECBC9131A050C0A00B71B67 /* factorial.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,12 +31,14 @@
 /* Begin PBXFileReference section */
 		7EB4C5841A03CD6200144569 /* codechef1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = codechef1.c; sourceTree = "<group>"; };
 		7EB4C5861A03CF1000144569 /* atm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = atm.c; sourceTree = "<group>"; };
+		7EB4C5881A03DBBE00144569 /* EnormousInputTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = EnormousInputTest.c; sourceTree = "<group>"; };
 		7EB5E1F419FC128400025B5D /* c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = c; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB5E1F719FC128400025B5D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		7EB5E1FF19FC12C500025B5D /* simplesort.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = simplesort.c; sourceTree = "<group>"; };
 		7EB5E20019FC12C500025B5D /* simplesort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simplesort.h; sourceTree = "<group>"; };
 		7EB5E20219FC142900025B5D /* base.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base.c; sourceTree = "<group>"; };
 		7EB5E20319FC142900025B5D /* base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
+		7ECBC9131A050C0A00B71B67 /* factorial.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = factorial.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				7EB4C5841A03CD6200144569 /* codechef1.c */,
 				7EB4C5861A03CF1000144569 /* atm.c */,
+				7EB4C5881A03DBBE00144569 /* EnormousInputTest.c */,
+				7ECBC9131A050C0A00B71B67 /* factorial.c */,
 			);
 			name = codechef;
 			sourceTree = "<group>";
@@ -159,9 +165,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EB5E20119FC12C500025B5D /* simplesort.c in Sources */,
+				7ECBC9141A050C0A00B71B67 /* factorial.c in Sources */,
 				7EB4C5871A03CF1000144569 /* atm.c in Sources */,
 				7EB5E20419FC142900025B5D /* base.c in Sources */,
 				7EB4C5851A03CD6200144569 /* codechef1.c in Sources */,
+				7EB4C5891A03DBBE00144569 /* EnormousInputTest.c in Sources */,
 				7EB5E1F819FC128400025B5D /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
