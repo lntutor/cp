@@ -1,4 +1,15 @@
 //
+//  turbosort.c
+//  c
+//
+//  Created by Lee Nguyen on 11/2/14.
+//  Copyright (c) 2014 LeeAnn. All rights reserved.
+//
+
+#include <stdio.h>
+
+
+//
 //  main.c
 //  c
 //
@@ -9,12 +20,6 @@
 
 #include <stdio.h>
 
-double factorial(unsigned int value){
-    if (value==1) {
-        return 1;
-    }else
-        return value*factorial(value-1);
-}
 
 void swap1(int *a, int *b){
     int temp = *a;

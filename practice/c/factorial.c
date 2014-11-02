@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-int factorial(unsigned int value){
+int factorialfac(unsigned int value){
     int result = 0;
     int i = 5;
     for (i = 5; value/i>0; i*=5) {
@@ -17,7 +17,7 @@ int factorial(unsigned int value){
     return result;
 }
 
-int main (){
+int mainfac (){
     int n;
     scanf("%d", &n);
     int array[n];
@@ -27,7 +27,7 @@ int main (){
         scanf("%d", &array[i]);
     }
     for (i = 0; i<n; i++) {
-        printf("%d\n", factorial(array[i]));
+        printf("%d\n", factorialfac(array[i]));
     }
     
     return 0;
