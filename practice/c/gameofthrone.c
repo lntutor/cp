@@ -1,3 +1,11 @@
+//
+//  gameofthrone.c
+//  c
+//
+//  Created by Lee Nguyen on 11/3/14.
+//  Copyright (c) 2014 LeeAnn. All rights reserved.
+//
+
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -26,7 +34,7 @@ void findPalind(char *arr)
             if (array[i]%2==0) {
                 continue;
             } else {
-                numOfOdd++;
+                numOfOdd++;//1 Odd-character type is acceptable, if >=2 ==> can not be palindrone
                 if (numOfOdd==2) {
                     flag = 0;
                     break;
@@ -49,3 +57,4 @@ int main() {
     findPalind(arr);
     return 0;
 }
+

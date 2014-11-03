@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-int main1 (){
+int mainenormous (){
     unsigned int n, value, result;
     scanf("%d", &n);
     scanf("%d", &value);

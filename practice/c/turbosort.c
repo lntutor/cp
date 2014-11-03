@@ -86,7 +86,7 @@ void merge_sort1(int array[], int left, int right) {
         merge1(array, left, mid, right);
     }
 }
-int main (){
+int maintubor (){
     int n;
     scanf("%d", &n);
     int array[n];

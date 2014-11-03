@@ -7,14 +7,14 @@
 //
 #include <stdio.h>
 
-int factorial1e23(unsigned int value){
+int factorial1(unsigned int value){
     if (value==1) {
         return 1;
     }else
-        return value*factorial(value-1);
+        return value*factorial1(value-1);
 }
 
-int main4324 (){
+int main1 (){
     int n;
     scanf("%d", &n);
     int array[n];
@@ -24,7 +24,7 @@ int main4324 (){
         scanf("%d", &array[i]);
     }
     for (i = 0; i<n; i++) {
-        printf("%d\n", factorial(array[i]));
+        printf("%d\n", factorial1(array[i]));
     }
     
     return 0;
