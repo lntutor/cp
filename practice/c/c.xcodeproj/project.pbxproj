@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E3C82BD1A09223B00419D07 /* love_letter_mystery.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C82BC1A09223B00419D07 /* love_letter_mystery.c */; };
 		7E7F2DE21A07A34800BE8BBD /* gameofthrone.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E7F2DE11A07A34800BE8BBD /* gameofthrone.c */; };
 		7EB4C5851A03CD6200144569 /* codechef1.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4C5841A03CD6200144569 /* codechef1.c */; };
 		7EB4C5871A03CF1000144569 /* atm.c in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4C5861A03CF1000144569 /* atm.c */; };
@@ -32,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E3C82BC1A09223B00419D07 /* love_letter_mystery.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = love_letter_mystery.c; sourceTree = "<group>"; };
 		7E7F2DE11A07A34800BE8BBD /* gameofthrone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gameofthrone.c; sourceTree = "<group>"; };
 		7EB4C5841A03CD6200144569 /* codechef1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = codechef1.c; sourceTree = "<group>"; };
 		7EB4C5861A03CF1000144569 /* atm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = atm.c; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				7E7F2DE11A07A34800BE8BBD /* gameofthrone.c */,
+				7E3C82BC1A09223B00419D07 /* love_letter_mystery.c */,
 			);
 			name = hackerrank;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				7EC9B5901A0636640042430D /* turbosort.c in Sources */,
 				7EB5E20119FC12C500025B5D /* simplesort.c in Sources */,
+				7E3C82BD1A09223B00419D07 /* love_letter_mystery.c in Sources */,
 				7ECBC9141A050C0A00B71B67 /* factorial.c in Sources */,
 				7EB4C5871A03CF1000144569 /* atm.c in Sources */,
 				7EB5E20419FC142900025B5D /* base.c in Sources */,

@@ -49,7 +49,7 @@ void findPalind(char *arr)
     
     return;
 }
-int main() {
+int maindsaf() {
     
     char arr[100001];
     memset(arr, 0, 100001);

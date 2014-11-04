@@ -1,3 +1,12 @@
+//
+//  love_letter_mystery.c
+//  c
+//
+//  Created by Lee Nguyen on 11/5/14.
+//  Copyright (c) 2014 LeeAnn. All rights reserved.
+//
+
+
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
