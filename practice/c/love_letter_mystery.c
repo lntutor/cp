@@ -12,7 +12,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-void findMystery(char *data){
+void findMysteryLoveLetter(char *data){
     int size = 0;
     int result = 0;
     while (*(data + size) != '\0') {
@@ -27,7 +27,7 @@ void findMystery(char *data){
     printf("%d\n", result);
 }
 
-int main() {
+int mainloveletter() {
     
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
     int n;
