@@ -26,10 +26,8 @@ void findMysteryLoveLetter(char *data){
     }
     printf("%d\n", result);
 }
-
-int mainloveletter() {
-    
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+/*
+int main() {
     int n;
     scanf("%d", &n);
     int i;
@@ -42,3 +40,4 @@ int mainloveletter() {
     }
     return 0;
 }
+*/

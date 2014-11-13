@@ -49,7 +49,8 @@ void findPalind(char *arr)
     
     return;
 }
-int maindsaf() {
+/*
+int main() {
     
     char arr[100001];
     memset(arr, 0, 100001);
@@ -57,4 +58,5 @@ int maindsaf() {
     findPalind(arr);
     return 0;
 }
+ */
 
