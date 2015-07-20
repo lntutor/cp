@@ -1,4 +1,4 @@
-var tweet = '@bob @john @john (success) @congcông @ひらがな such a cool feature; https://twitter.com/jdorfman/status/430511497475670016';
+var request = require('sync-request');
 
 var unicode_hack = (function() {
     /* Regexps to match characters in the BMP according to their Unicode category.
@@ -72,8 +72,27 @@ function isInArray(array, search)
     return array.indexOf(search) >= 0;
 }
 
+function getPageTitle(url) {
+  try{
+    var res = request('GET', url);
+    var html = res.getBody();
+    var re = /(<\s*title[^>]*>(.+?)<\s*\/\s*title)>/gi;
+    var match = re.exec(html);
+    if (match && match[2]) {
+        var title = match[2].replace(/&quot;/g,'');
+        return title;
+    }
+  } catch (err) {
+    return '';
+  }
+  return '';
+}
+
+var tweet = '@bob @john_ @_john (success) @congcông @ひらがな such a cool feature; https://twitter.com/jdorfman/status/430511497475670016';
+
 function parse (tweet) {
-	var mentionRegex = unicode_hack(/(@)((\p{L}*))/g);
+
+	var mentionRegex = unicode_hack(/(@)(_)?((\p{L}*))(_)?/g);
 	var emotionRegex = /(\()([A-Za-z]*)(\))/g
 	var urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/g;
 
@@ -91,16 +110,6 @@ function parse (tweet) {
 	}
 
 	try {
-		while(match = urlRegex.exec(tweet)) {
-			var tmp = match[0];
-			if(!isInArray(link, tmp))
-				link.push(tmp);
-		}
-	} catch (err) {
-		throw (err);
-	}
-
-	try {
 		while(match = emotionRegex.exec(tweet)) {
 			if (match[0] != '(error)') {
 				var tmp = match[0].slice(1,-1);
@@ -111,6 +120,19 @@ function parse (tweet) {
 	} catch (err) {
 		throw (err);
 	}
+
+  try {
+    while(match = urlRegex.exec(tweet)) {
+      var tmpLink = match[0];
+      if(!isInArray(link, tmpLink)) {
+        var title = getPageTitle(tmpLink);
+        link.push({url: tmpLink, title: title});
+      }
+    }
+
+  } catch (err) {
+    throw (err);
+  }
 
 	var result = {};
 	if (mention.length >0) result.mentions = mention;
