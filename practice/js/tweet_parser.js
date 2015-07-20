@@ -1,7 +1,11 @@
 var request = require('sync-request');
 
-/*Because JS original regex does not support Unicode, this function make js regex support Unicode*/
-var unicode_hack = (function() {
+/**
+ * Conver js normal regex to unicode-supported regex
+ * @param {Regex} normal regex
+ * @return {Regex} unicode-supported regex
+ */
+var getUnicodeRegex = (function() {
     /* Regexps to match characters in the BMP according to their Unicode category.
        Extracted from running all characters (code units) against Java's
        Character.getType. Source:
@@ -68,15 +72,21 @@ var unicode_hack = (function() {
 })();
 
 
-function isInArray(array, search)
-{
-    return array.indexOf(search) >= 0;
+/**
+ * Check if an item is in an array
+ * @param {Array} array
+ * @param {String}
+ * @return {Boolean}
+ */
+function isInArray(array, item) {
+  return array.indexOf(item) >= 0;
 }
 
-/*Get Page Title
-* @param url
+/**
+* Get page title
+* @param {String} url
+* @return {String} page title of the url if success or empty string if failed
 */
-
 function getPageTitle(url) {
   try{
     var res = request('GET', url);
@@ -93,9 +103,14 @@ function getPageTitle(url) {
   return '';
 }
 
+/**
+* Parse input
+* @param {String} tweet 
+* @return {String} json-result
+*/
 function parse (tweet) {
   //console.log(tweet);
-	var mentionRegex = unicode_hack(/(@)([A-Za-z0-9-_]*\p{L}*[A-Za-z0-9-_]*)/g);
+	var mentionRegex = getUnicodeRegex(/(@)([A-Za-z0-9-_]*\p{L}*[A-Za-z0-9-_]*)/g);
 	var emotionRegex = /(\()([A-Za-z]*)(\))/g
 	var urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/g;
 
@@ -144,12 +159,8 @@ function parse (tweet) {
 }
 
 if (process.argv.length >=2) {
-  //console.log(process.argv[2]);
   console.log(parse(process.argv[2]));
 } else {
   console.log('no input param');
 }
-
-
-
 
