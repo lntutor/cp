@@ -1,5 +1,6 @@
 var request = require('sync-request');
 
+/*Because JS original regex does not support Unicode, this function make js regex support Unicode*/
 var unicode_hack = (function() {
     /* Regexps to match characters in the BMP according to their Unicode category.
        Extracted from running all characters (code units) against Java's
@@ -72,6 +73,10 @@ function isInArray(array, search)
     return array.indexOf(search) >= 0;
 }
 
+/*Get Page Title
+* @param url
+*/
+
 function getPageTitle(url) {
   try{
     var res = request('GET', url);
@@ -88,10 +93,8 @@ function getPageTitle(url) {
   return '';
 }
 
-var tweet = '@bob @john_ @_11___john___ (success) @congcông @ひらがな such a cool feature; https://twitter.com/jdorfman/status/430511497475670016';
-
 function parse (tweet) {
-  console.log(tweet);
+  //console.log(tweet);
 	var mentionRegex = unicode_hack(/(@)([A-Za-z0-9-_]*\p{L}*[A-Za-z0-9-_]*)/g);
 	var emotionRegex = /(\()([A-Za-z]*)(\))/g
 	var urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/g;
@@ -100,9 +103,9 @@ function parse (tweet) {
 	var emotion = [];
 	var link = [];
 	try {
-		while(match = mentionRegex.exec(tweet)) {
+		while (match = mentionRegex.exec(tweet)) {
 			var tmp = match[0].substr(1);
-			if(!isInArray(mention, tmp))
+			if (!isInArray(mention, tmp))
 				mention.push(tmp);
 		}
 	} catch (err) {
@@ -110,10 +113,10 @@ function parse (tweet) {
 	}
 
 	try {
-		while(match = emotionRegex.exec(tweet)) {
+		while (match = emotionRegex.exec(tweet)) {
 			if (match[0] != '(error)') {
 				var tmp = match[0].slice(1,-1);
-				if(!isInArray(emotion, tmp))
+				if (!isInArray(emotion, tmp))
 					emotion.push(tmp);
 			}
 		}
@@ -122,28 +125,31 @@ function parse (tweet) {
 	}
 
   try {
-    while(match = urlRegex.exec(tweet)) {
+    while (match = urlRegex.exec(tweet)) {
       var tmpLink = match[0];
-      if(!isInArray(link, tmpLink)) {
+      if (!isInArray(link, tmpLink)) {
         var title = getPageTitle(tmpLink);
         link.push({url: tmpLink, title: title});
       }
     }
-
   } catch (err) {
     throw (err);
   }
 
 	var result = {};
-	if (mention.length >0) result.mentions = mention;
-	if (emotion.length >0) result.emotions = emotion;
-	if (link.length >0) result.links = link;
-
-
-	console.log(result);
+	if (mention.length > 0) result.mentions = mention;
+	if (emotion.length > 0) result.emotions = emotion;
+	if (link.length > 0) result.links = link;
 	return result;
 }
 
-parse(tweet);
+if (process.argv.length >=2) {
+  //console.log(process.argv[2]);
+  console.log(parse(process.argv[2]));
+} else {
+  console.log('no input param');
+}
+
+
 
 
