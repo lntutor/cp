@@ -1,5 +1,6 @@
 var request = require('sync-request');
 
+var LIMIT_CHARACTER = 53;
 /**
  * Conver js normal regex to unicode-supported regex
  * @param {Regex} normal regex
@@ -98,6 +99,7 @@ function getPageTitle(url) {
         return title;
     }
   } catch (err) {
+    console.log(err);
     return '';
   }
   return '';
@@ -118,54 +120,40 @@ function parse (tweet) {
 	var emotion = [];
 	var link = [];
 	try {
+    
+    //get mentions
 		while (match = mentionRegex.exec(tweet)) {
 			var tmp = match[0].substr(1);
 			if (!isInArray(mention, tmp))
 				mention.push(tmp);
 		}
-	} catch (err) {
-		throw (err);
-	}
-
-	try {
-		while (match = emotionRegex.exec(tweet)) {
-			if (match[0] != '(error)') {
-				var tmp = match[0].slice(1,-1);
-				if (!isInArray(emotion, tmp))
-					emotion.push(tmp);
-			}
-		}
-	} catch (err) {
-		throw (err);
-	}
-
-  try {
+    //get links
     while (match = urlRegex.exec(tweet)) {
       var tmpLink = match[0];
       if (!isInArray(link, tmpLink)) {
         var title = getPageTitle(tmpLink);
-        if (title.length > 53)
+        if (title.length > LIMIT_CHARACTER)
           title = title.substring(0, 53) + ' ...';
         link.push({url: tmpLink, title: title});
       }
     }
-  } catch (err) {
-    throw (err);
-  }
 
+    //get emotion
+    while (match = emotionRegex.exec(tweet)) {
+      var tmp = match[0].slice(1,-1);
+      if (!isInArray(emotion, tmp))
+        emotion.push(tmp);
+    }
+	} catch (err) {
+		//throw (err);
+    console.log(err);
+	}
 	var result = {};
 	if (mention.length > 0) result.mentions = mention;
 	if (emotion.length > 0) result.emotions = emotion;
 	if (link.length > 0) result.links = link;
 	return result;
 }
-/*
-if (process.argv.length >=2) {
-  console.log(parse(process.argv[2]));
-} else {
-  console.log('no input param');
-}
-*/
 
 module.exports.parse = parse;
 

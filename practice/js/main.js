@@ -1,9 +1,10 @@
 var parse = require('./tweet_parser');
 
-var test1 = "@bob @john_ @_11___john___ (success) @congcông @ひらがな such a cool feature; https://twitter.com/jdorfman/status/430511497475670016";
-var test2 = '@chris you around?';
-var test3 = 'Good morning! (megusta) (coffee)';
-var test4 = 'Olympics are starting soon; http://www.nbcolympics.com';
+var test1 = '@chris you around?';
+var test2 = 'Good morning! (megusta) (coffee)';
+var test3 = 'Olympics are starting soon; http://www.nbcolympics.com';
+var test4 = "@bob @john_ @_11___john_123_ (success) @congcông @ひらがな such a cool feature; https://twitter.com/jdorfman/status/430511497475670016";
+
 var testCase = [test1, test2, test3, test4];
 
 testCase.forEach(function(item){
