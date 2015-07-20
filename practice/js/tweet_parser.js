@@ -144,6 +144,8 @@ function parse (tweet) {
       var tmpLink = match[0];
       if (!isInArray(link, tmpLink)) {
         var title = getPageTitle(tmpLink);
+        if (title.length > 53)
+          title = title.substring(0, 53) + ' ...';
         link.push({url: tmpLink, title: title});
       }
     }
@@ -157,10 +159,13 @@ function parse (tweet) {
 	if (link.length > 0) result.links = link;
 	return result;
 }
-
+/*
 if (process.argv.length >=2) {
   console.log(parse(process.argv[2]));
 } else {
   console.log('no input param');
 }
+*/
+
+module.exports.parse = parse;
 
