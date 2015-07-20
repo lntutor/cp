@@ -88,11 +88,11 @@ function getPageTitle(url) {
   return '';
 }
 
-var tweet = '@bob @john_ @_john (success) @congcông @ひらがな such a cool feature; https://twitter.com/jdorfman/status/430511497475670016';
+var tweet = '@bob @john_ @_11___john___ (success) @congcông @ひらがな such a cool feature; https://twitter.com/jdorfman/status/430511497475670016';
 
 function parse (tweet) {
-
-	var mentionRegex = unicode_hack(/(@)(_)?((\p{L}*))(_)?/g);
+  console.log(tweet);
+	var mentionRegex = unicode_hack(/(@)([A-Za-z0-9-_]*\p{L}*[A-Za-z0-9-_]*)/g);
 	var emotionRegex = /(\()([A-Za-z]*)(\))/g
 	var urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/g;
 
