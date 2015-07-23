@@ -111,7 +111,6 @@ function getPageTitle(url) {
 * @return {String} json-result
 */
 function parse (tweet) {
-  //console.log(tweet);
 	var mentionRegex = getUnicodeRegex(/(@)([A-Za-z0-9-_]*\p{L}*[A-Za-z0-9-_]*)/g);
 	var emotionRegex = /(\()([A-Za-z]*)(\))/g
 	var urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/g;
