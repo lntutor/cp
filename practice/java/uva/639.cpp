@@ -83,7 +83,7 @@ int main() {
 		if (n == 0)
 			break;
 
-		memset(array, sizeof(array), 0);
+		// memset(array, sizeof(array), 0);
 
 		REP(i, 0, n-1 )
 		{
