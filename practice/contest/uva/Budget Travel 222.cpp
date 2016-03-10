@@ -12,7 +12,10 @@ int n;
 double stationDistance[100];
 double stationCost[100];
 
-double solve(double currentDistance, int nextStation) {
+double solve(int nextStation) {
+	double currentDistance = 0;
+	if (nextStation > 0) currentDistance = stationDistance[nextStation-1];
+
 	if (currentDistance + capacity*milePerGallon >=d) return 0;
 	if (nextStation >= n) return 0;
 	double best = 10000000;
@@ -22,9 +25,9 @@ double solve(double currentDistance, int nextStation) {
 		if (capacity - fuelUsed < 0) break;
 
 		if (capacity - fuelUsed <= capacity/2.0) {
-			best = min(best, 200 + fuelUsed*stationCost[i] + solve(stationDistance[i], i + 1));
+			best = min(best, 200 + fuelUsed*stationCost[i] + solve(i + 1));
 		} else if (capacity - fuelUsed > capacity/2.0 && stationDistance[i] > capacity*milePerGallon + currentDistance) {
-			return 200 + fuelUsed*stationCost[i] + solve(stationDistance[i], i+1);
+			return 200 + fuelUsed*stationCost[i] + solve(i+1);
 		}
 	}
 
@@ -44,9 +47,6 @@ int main() {
 			scanf("%lf %lf", &stationDistance[i], &stationCost[i]);
 		}
 		printf("Data Set #%d\n", ++count);
-        printf("minimum cost = $%.2f\n", firstCost + solve(0, 0)/100);
-
-
+    printf("minimum cost = $%.2f\n", firstCost + solve(0)/100);
 	}
-
 }
