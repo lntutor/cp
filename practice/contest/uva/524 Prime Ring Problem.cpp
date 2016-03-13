@@ -55,8 +55,7 @@ void backTrack(int current) {
 	{
 		if (result.size() <= n - 1) {
 			int last = *(result.end() - 1);
-			int number = last + i;
-			if (isValid(number, i)) {
+			if (isValid(last + i, i)) {
 				result.push_back(i);
 				backTrack(current + 1);
 				result.pop_back();
