@@ -13,6 +13,12 @@
 using namespace std;
 
 #define REP(i, a, b) for(int i = a; i <= b; i++)
+#define TRvi(c, it) \
+for (vi::iterator it = (c).begin(); it != (c).end(); it++)
+#define TRvii(c, it) \
+for (vii::iterator it = (c).begin(); it != (c).end(); it++)
+#define TRmsi(c, it) \
+for (msi::iterator it = (c).begin(); it != (c).end(); it++)
 
 int t, n, c;
 std::map<char, int> dict;
