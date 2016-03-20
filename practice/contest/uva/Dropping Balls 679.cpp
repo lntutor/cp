@@ -6,6 +6,8 @@ using namespace std;
 
 int MAX_NODE;
 
+
+//search from 1 to MAX_NODE-1
 void BinarySearch(int node, int balls) {
 	int left = 2 * node;
 	int right = 2 * node + 1;
