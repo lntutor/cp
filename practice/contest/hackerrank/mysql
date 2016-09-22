@@ -1,0 +1,128 @@
+SELECT c.* from CITY c WHERE COUNTRYCODE='USA' AND POPULATION > 100000;
+SELECT c.NAME from CITY c WHERE COUNTRYCODE='USA' AND POPULATION > 120000;
+SELECT C.* FROM CITY C;
+SELECT C.* FROM CITY C WHERE C.ID=1661;
+SELECT C.* FROM CITY C WHERE C.COUNTRYCODE='JPN';
+SELECT S.CITY, S.STATE FROM STATION S;
+SELECT DISTINCT S.CITY FROM STATION S WHERE S.ID%2=0;
+SELECT COUNT(S.CITY) - COUNT(distinct S.CITY) FROM STATION S;
+
+SELECT S.CITY, length(S.CITY) FROM STATION S ORDER BY length(S.CITY) ASC, S.CITY ASC LIMIT 1;
+SELECT S.CITY, length(S.CITY) FROM STATION S ORDER BY length(S.CITY) DESC, S.CITY DESC LIMIT 1;
+
+
+Query the list of CITY names starting with vowels (a, e, i, o, u) from STATION.
+Your result cannot contain duplicates.
+SELECT DISTINCT S.CITY FROM STATION S WHERE S.CITY LIKE 'a%' OR S.CITY LIKE 'e%'
+OR S.CITY LIKE 'i%' OR S.CITY LIKE 'o%' OR S.CITY LIKE 'u%';
+
+Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION.
+Your result cannot contain duplicates.
+SELECT DISTINCT S.CITY FROM STATION S WHERE S.CITY LIKE '%a' OR S.CITY LIKE '%i'
+OR S.CITY LIKE '%u' OR S.CITY LIKE '%e' OR S.CITY LIKE '%o';
+Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters.
+
+ Your result cannot contain duplicates.
+SELECT DISTINCT S.CITY FROM STATION S WHERE (S.CITY LIKE 'a%' OR S.CITY LIKE 'e%'
+OR S.CITY LIKE 'i%' OR S.CITY LIKE 'o%' OR S.CITY LIKE 'u%') AND (S.CITY LIKE '%a' OR S.CITY LIKE '%i'
+OR S.CITY LIKE '%u' OR S.CITY LIKE '%e' OR S.CITY LIKE '%o');
+
+
+Query the list of CITY names from STATION that do not start with vowels. Your result cannot contain duplicates.
+
+SELECT DISTINCT S.CITY FROM STATION S WHERE (S.CITY NOT LIKE 'a%' AND S.CITY NOT LIKE 'i%'
+AND S.CITY NOT LIKE 'u%' AND S.CITY NOT LIKE 'e%' AND S.CITY NOT LIKE 'o%')
+
+Query the list of CITY names from STATION that do not end with vowels. Your result cannot contain duplicates.
+
+SELECT DISTINCT S.CITY FROM STATION S WHERE (S.CITY NOT LIKE '%a' AND S.CITY NOT LIKE '%i'
+AND S.CITY NOT LIKE '%u' AND S.CITY NOT LIKE '%e' AND S.CITY NOT LIKE '%o' )
+
+Higher Than 75 Marks
+SELECT S.Name FROM STUDENTS S WHERE S.Marks > 75 ORDER BY RIGHT(S.Name,3) ASC, S.ID ASC;
+
+https://www.hackerrank.com/challenges/asian-population
+SELECT SUM(CITY.POPULATION) FROM CITY, COUNTRY
+WHERE CITY.CountryCode = COUNTRY.CODE
+AND COUNTRY.CONTINENT = 'Asia'
+
+https://www.hackerrank.com/challenges/african-cities
+
+SELECT CITY.NAME FROM CITY, COUNTRY
+WHERE CITY.COUNTRYCODE = COUNTRY.CODE
+AND COUNTRY.CONTINENT = 'Africa'
+
+https://www.hackerrank.com/challenges/average-population-of-each-continent
+
+SELECT COUNTRY.CONTINENT,
+round(avg(City.Population)-0.5)
+FROM CITY, COUNTRY
+WHERE COUNTRY.CODE = CITY.COUNTRYCODE
+GROUP BY COUNTRY.CONTINENT
+
+
+https://www.hackerrank.com/challenges/the-report
+
+SELECT CASE WHEN G.Grade<8 THEN NULL ELSE S.Name END, G.GRADE, S.MARKS
+FROM Students S
+INNER JOIN Grades G
+ON S.Marks BETWEEN G.Min_Mark and G.Max_Mark
+order by G.Grade DESC, S.name
+
+
+
+create view tmp1 as select count(distinct a.user_id) AS returned_buyers,
+a.created_at from purchases a
+where a.user_id in (select b.user_id from purchases b where a.user_id = b.user_id and b.created_at < a.created_at)
+group by 2;
+
+create view tmp2 as select count(distinct a.user_id) AS new_buyers,
+a.created_at from purchases a
+where a.user_id not in (select b.user_id from purchases b where a.user_id = b.user_id and b.created_at < a.created_at)
+group by 2;
+
+create view months as select created_at from purchases;
+
+create view tmp3 as select tmp1.created_at, tmp2.new_buyers, tmp1.returned_buyers
+from tmp1
+left join tmp2 on tmp1.created_at = tmp2.created_at;
+
+create view tmp4 as select tmp2.created_at, tmp2.new_buyers, tmp1.returned_buyers
+from tmp2
+left join tmp1 on tmp1.created_at = tmp2.created_at;
+
+create view tmp5 as select * from tmp3 union select * from tmp4 order by created_at;
+
+select created_at, case when new_buyers > 0 then new_buyers else 0 end first_time_buyers,
+case when returned_buyers > 0 then returned_buyers else 0 end returned_buyers
+from tmp5;
+
+https://www.hackerrank.com/challenges/what-type-of-triangle
+SELECT
+  CASE
+    WHEN A + B <= C THEN 'Not A Triangle'
+    WHEN (A = B AND A = C) THEN 'Equilateral'
+    WHEN (A = B OR A = C) THEN 'Isosceles'
+    ELSE 'Scalene'
+  END AS result
+FROM TRIANGLES;
+
+https://www.hackerrank.com/challenges/the-pads
+
+SELECT CONCAT(O.NAME, '(', SUBSTRING(O.OCCUPATION, 1, 1),')')
+FROM OCCUPATIONS O ORDER BY O.NAME;
+
+SELECT CONCAT('There are total ', COUNT(O.OCCUPATION),' ', LOWER(O.OCCUPATION), 's.')
+FROM OCCUPATIONS O
+GROUP BY O.OCCUPATION ORDER BY 1;
+
+https://www.hackerrank.com/challenges/binary-search-tree-1
+
+SELECT
+ CASE
+  WHEN BST.P is NULL THEN CONCAT(BST.N, ' Root')
+  WHEN BST.N IN (SELECT P FROM BST) THEN CONCAT(BST.N, ' Inner')
+  ELSE CONCAT(BST.N, ' Leaf')
+ END
+FROM BST
+ORDER BY BST.N
