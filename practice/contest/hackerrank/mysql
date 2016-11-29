@@ -126,3 +126,71 @@ SELECT
  END
 FROM BST
 ORDER BY BST.N
+
+
+https://www.hackerrank.com/challenges/the-company
+
+SELECT DISTINCT C.company_code, C.founder,
+COUNT(DISTINCT LM.lead_manager_code),
+COUNT(DISTINCT SM.senior_manager_code),
+COUNT(DISTINCT M.manager_code),
+COUNT(DISTINCT E.employee_code)
+
+FROM
+Employee E, Manager M, Senior_Manager SM, Lead_Manager LM, Company C
+
+WHERE E.manager_code = M.manager_code
+  AND E.senior_manager_code = SM.senior_manager_code
+  AND E.lead_manager_code = LM.lead_manager_code
+  AND M.senior_manager_code = SM.senior_manager_code
+  AND M.lead_manager_code = LM.lead_manager_code
+  AND SM.lead_manager_code = LM.lead_manager_code
+  AND E.company_code = C.company_code
+  AND M.company_code = C.company_code
+  AND SM.company_code = C.company_code
+  AND LM.company_code = C.company_code
+GROUP BY C.company_code
+ORDER BY 1
+
+
+https://www.hackerrank.com/challenges/projects
+
+SELECT Start_Date, End_Date from
+(Select Start_Date from Projects Where Start_Date not in (SELECT End_Date from Projects)) a,
+(Select End_Date from projects where End_Date not in (SELECT Start_Date from Projects)) b
+WHERE Start_Date < End_Date
+Group by Start_Date
+Order by DATEDIFF(End_Date, Start_Date), Start_Date
+
+https://www.hackerrank.com/challenges/placements
+
+select S.Name
+from Students S, Friends F, Packages P1, Packages P2
+Where S.ID = F.ID
+And S.ID = P1.ID
+And F.Friend_id = P2.ID
+AND P1.Salary < P2.Salary
+Order by P2.Salary
+
+https://www.hackerrank.com/challenges/the-blunder
+
+select CEIL(AVG(Salary)-AVG(REPLACE(Salary,'0',''))) from employees;
+
+https://www.hackerrank.com/challenges/earnings-of-employees
+
+select (salary*months) as earning, count(*)
+from employee e
+group by 1
+order by earning desc limit 1
+
+https://www.hackerrank.com/challenges/interviews
+
+Key: Aggegrate result bottom up
+
+Create view View_Stats_Total as select challenge_id as challenge_id, sum(total_views) as total_views, sum(total_unique_views) as total_unique_views
+from View_Stats
+group by challenge_id;
+
+Create view Submission_Stats_Total as select challenge_id as challenge_id, sum(total_submissions) as total_submissions, sum(total_accepted_submissions) as total_accepted_submissions
+from Submission_Stats
+group by challenge_id;
