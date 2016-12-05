@@ -22,7 +22,7 @@ void decode_huff(node * root,string s)
     if (root == NULL) return;
     int loop = 0;
     node* tmp = root;
-    while(loop <= s.length()) {
+    while(loop <= s.length()) {//\n for end input
         if (tmp->left == NULL && tmp->right == NULL) {
             result.push_back(tmp->data);
             tmp = root;
