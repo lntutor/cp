@@ -1,4 +1,3 @@
-https://www.hackerrank.com/contests/test-contest-27/challenges/matching-brackets
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -17,17 +16,25 @@ bool match(char a, char b) {
 bool isCloseChar(char a) {
     return a == ')' || a == ']' || a == '}';
 }
+
+bool isOpenChar(char a) {
+    return a == '(' || a == '[' || a == '{';
+}
 bool solve(string value) {
     std::stack<char> myStack;
     for(int i = 0; i < value.length(); i++) {
-        if (myStack.empty() && isCloseChar(value[i])) return false;
-        if (value[i] == '(' || value[i] == '{' || value[i] == '[') {
+        if (isOpenChar(value[i])) {
             myStack.push(value[i]);
-        } else if (!myStack.empty() && match(myStack.top(),value[i])) myStack.pop();
+            continue;
+        }
+        //close char case
+        if (myStack.empty()) return false;
+        if (match(myStack.top(), value[i])) myStack.pop();
+        else false;
     }
-    if (!myStack.empty()) return false;
-    return true;
+    return myStack.empty();
 }
+
 
 int T;
 
