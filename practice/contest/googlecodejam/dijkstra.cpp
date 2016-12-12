@@ -28,10 +28,10 @@ int main() {
     priority_queue<ii, vector<ii>, greater<ii> > pq;
     pq.push(ii(0, s));
     while(!pq.empty()) {
-
       ii front = pq.top(); pq.pop();
-      int d = front.first; int u = front.second;
-      if (d > dist[u]) continue;
+      int distance = front.first;
+      int u = front.second;
+      //if (distance > dist[u]) continue;
       TRvii(AdjList[u], v) {
         if (dist[u] + v->second < dist[v->first]) {
           dist[v->first] = dist[u] + v->second;

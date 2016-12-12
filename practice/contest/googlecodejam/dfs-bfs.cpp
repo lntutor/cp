@@ -13,8 +13,7 @@ typedef vector<ii> vii;
 typedef set<int> si;
 typedef map<string, int> msi;
 
-#define TRvii(c, it) \
-		for (vii::iterator it = (c).begin(); it != (c).end(); it++)
+#define TRvii(c, it) for (vii::iterator it = (c).begin(); it != (c).end(); it++)
 #define REP(i, a, b) for (int i = int(a); i <= int(b); i++)
 
 
