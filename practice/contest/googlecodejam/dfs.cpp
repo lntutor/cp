@@ -49,6 +49,25 @@ void getConnectedComponent() {
 }
 
 
+queue<int> q;
+map<int, int> dist;
+
+void bfs(int s) {
+    q.push(s);
+    dist[s] = 0;
+    while(!q.empty()) {
+        int u = q.front();
+        q.pop();
+        printf("Visit %d, Layer %d\n", u, dist[u]);
+        TRvii(adjList[u], v) {
+            if (!dist.count(v->first)) {
+                dist[v->first] = dist[u] + 1;
+                q.push(v->first);
+            }
+        }
+    }
+}
+
 int main()
 {
     adjList[0].push_back(make_pair(1 , DEFAULT_WEIGHT));
