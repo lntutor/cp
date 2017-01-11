@@ -22,13 +22,24 @@ bool solve(int p, int x, int y) {// return false for white, true for black
     return false;
   }
   bool isInCircle = (x - 50) * (x - 50) + (y - 50) * (y - 50) <= 2500;
-  double realAngle = abs(atan2 (y,x) * 180 / PI - 90);
 
-  // cout << "realAngle = " << realAngle << endl;
+  cout << isInCircle << endl;
+  if (isInCircle == false) return false;
+
+  double realAngle = atan2 (y-50,x-50) * 180 / PI;
+  cout << "realAngle" << realAngle << endl;
+  if (realAngle >=0) {
+    if (realAngle <= 90)
+      realAngle = 90 - realAngle;
+    else
+      realAngle = 180 - realAngle + 270;
+  } else {
+    realAngle = -realAngle + 90;
+  }
+  cout << "realAngle = " << realAngle << endl;
   bool isInSector = 100*realAngle/360 <= p;
-
-  return isInCircle && isInSector;
-
+  // cout << isInSector << endl;
+  return isInSector;
 }
 
 int main() {
