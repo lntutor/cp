@@ -21,11 +21,17 @@ int T;
 
 int solve(int * array, int currentArraySize, int currentMaxIndex) {
 
-  if (currentArraySize <= 0 || currentMaxIndex < 0) return 0;
+  if (currentArraySize < 0 || currentMaxIndex < 0) return 0;
 
   int maxValue = array[currentMaxIndex];
 
-  int minPackages = MIN_LIMIT/maxValue + 1;
+  int minPackages = 0;
+
+  if (MIN_LIMIT%maxValue == 0) {
+     minPackages = MIN_LIMIT/maxValue;
+  } else {
+     minPackages = MIN_LIMIT/maxValue + 1;
+  }
 
   if (minPackages > currentArraySize) return 0;
 
@@ -49,7 +55,7 @@ int main() {
   		fscanf(pFile, "%d", &array[j]);
     }
     sort(array, array + N);
-    
+
 		myfile << "Case #" << i << ":" << " " << solve(array, N, N-1) << endl;
 	}
 	myfile.close();
