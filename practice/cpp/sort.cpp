@@ -80,8 +80,8 @@ int main()
 {
     int arr[] = {12, 11, 13, 5, 6, 7, 1 , 4};
     int n = sizeof(arr)/sizeof(arr[0]);
-//    heapSort(arr, n);
-//    insertionSort(arr, n);
+    //    heapSort(arr, n);
+    //    insertionSort(arr, n);
     quicksort(arr, 0, n-1);
     cout << "Sorted array is \n";
     printArray(arr, n);

@@ -1,14 +1,14 @@
 /*
-The structure of the node is
+   The structure of the node is
 
-typedef struct node
-{
-    int freq;
-    char data;
-    node * left;
-    node * right;
+   typedef struct node
+   {
+   int freq;
+   char data;
+   node * left;
+   node * right;
 
-}node;
+   }node;
 
 */
 
